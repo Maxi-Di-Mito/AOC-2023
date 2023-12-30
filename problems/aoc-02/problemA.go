@@ -4,19 +4,21 @@ import (
 	"bufio"
 	"fmt"
 	"os"
-	"strconv"
-	"strings"
 )
 
-type found struct {
-	index  int
-	word   string
-	number int
+type hand struct {
+	red   int
+	blue  int
+	green int
 }
 
-func RunB() {
+type game struct {
+	id   int
+	list []hand
+}
 
-	file, err := os.Open("problems/aoc-01/data.txt")
+func RunA() {
+	file, err := os.Open("problems/aoc-02/data.txt")
 	if err != nil {
 		panic(err)
 	}
@@ -25,10 +27,36 @@ func RunB() {
 
 	scanner := bufio.NewScanner(file)
 
-	count := 0
+	maxRed := 12
+	maxGreen := 13
+	maxBlue := 14
+
+	gameList := []game{}
 
 	for scanner.Scan() {
 		line := scanner.Text()
 
+		theGame := parseLine(line)
+
+		gameList = append(gameList, theGame)
 	}
+
+	count := 0
+
+	for _, game := range gameList {
+		valid := true
+		for _, hand := range game.list {
+			fmt.Println("HAND", hand)
+			if hand.red > maxRed || hand.blue > maxBlue || hand.green > maxGreen {
+				valid = false
+				break
+			}
+		}
+		fmt.Println("VALID", valid)
+		if valid {
+			count += game.id
+		}
+	}
+
+	fmt.Println(count)
 }

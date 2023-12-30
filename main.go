@@ -1,8 +1,10 @@
 package main
 
-import aoc01 "aoc-2023/problems/aoc-01"
+import (
+	aoc02 "aoc-2023/problems/aoc-02"
+)
 
 func main() {
-	aoc01.RunB()
+	aoc02.RunA()
 
 }
