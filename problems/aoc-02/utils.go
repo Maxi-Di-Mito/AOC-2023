@@ -6,6 +6,18 @@ import (
 	"strings"
 )
 
+type hand struct {
+	red   int
+	blue  int
+	green int
+}
+
+type game struct {
+	id    int
+	list  []hand
+	power int
+}
+
 func parseLine(line string) game {
 	redReg := regexp.MustCompile(` (?P<value>\d\d?) red`)
 	blueReg := regexp.MustCompile(` (?P<value>\d\d?) blue`)
@@ -15,7 +27,7 @@ func parseLine(line string) game {
 	idText := strings.Replace(split[0], "Game ", "", 1)
 	id, _ := strconv.Atoi(idText)
 	handsText := split[1]
-	hands := strings.Split(handsText, ",")
+	hands := strings.Split(handsText, ";")
 
 	theGame := game{id: id, list: []hand{}}
 

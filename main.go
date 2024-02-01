@@ -5,6 +5,6 @@ import (
 )
 
 func main() {
-	aoc02.RunA()
+	aoc02.RunAB()
 
 }
