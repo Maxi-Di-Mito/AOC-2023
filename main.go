@@ -1,10 +1,10 @@
 package main
 
 import (
-	aoc02 "aoc-2023/problems/aoc-02"
+	aoc03 "aoc-2023/problems/aoc-03"
 )
 
 func main() {
-	aoc02.RunAB()
+	aoc03.RunA()
 
 }
